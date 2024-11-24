@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, forwardRef, input, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   providers: [
@@ -19,6 +20,7 @@ export class InputComponent implements OnChanges, ControlValueAccessor {
   onTouched: any = () => {};
   value!: string;
   disabled!: boolean;
+  isInvalid = input<boolean | undefined>(false);
 
   valueChanged(val: string) {
     this.onChange(val);

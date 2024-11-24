@@ -16,9 +16,9 @@
 
 
       <form [formGroup]="form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" (ngSubmit)="submit()">
-        <app-input label="Model Name" placeholder="Tesla model Y" formControlName="modelName"></app-input>
+        <app-input label="Model Name" placeholder="Tesla model Y" formControlName="modelName" [isInvalid]="(form.get('modelName')?.invalid && form.get('modelName')?.value !== '')"></app-input>
 
-        <app-input label="Max Speed (km/h)" placeholder="200 Km/h" formControlName="maxSpeed" type="number" min="80"></app-input>
+        <app-input label="Max Speed (km/h)" placeholder="200 Km/h" formControlName="maxSpeed" type="number" [isInvalid]="form.get('maxSpeed')?.invalid"></app-input>
 
         <app-input label="Picture" placeholder="https://via.placeholder.com/400x300" formControlName="picture" type="text"></app-input>
 

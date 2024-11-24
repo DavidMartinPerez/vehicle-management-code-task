@@ -26,8 +26,6 @@ describe('VehicleEditComponent', () => {
   let fixture: ComponentFixture<VehicleEditComponent>;
   let mockStore: MockStore;
   let mockVehicleService: jasmine.SpyObj<VehicleService>;
-  let mockActivatedRoute: jasmine.SpyObj<ActivatedRoute>;
-  let dispatchSpy: jasmine.Spy;
 
 
   beforeEach(async () => {
@@ -43,12 +41,6 @@ describe('VehicleEditComponent', () => {
     .compileComponents();
 
     mockStore = TestBed.inject(MockStore);
-    dispatchSpy = spyOn(mockStore, 'dispatch');
-
-    mockVehicleService = jasmine.createSpyObj('VehicleService', ['saveVehicle', 'getVehicleById']);
-    mockActivatedRoute = jasmine.createSpyObj('ActivatedRoute', ['params']);
-
-    // mockActivatedRoute.params.subscribe.and.callFake((callback: Function) => callback({ id: '1' }));
 
     fixture = TestBed.createComponent(VehicleEditComponent);
     component = fixture.componentInstance;
@@ -59,24 +51,8 @@ describe('VehicleEditComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should load the vehicle data into the form when editing a vehicle', () => {
-    // Simulamos la carga de un vehículo
-    mockVehicleService.getVehicleById.and.returnValue();
-
-    // Cambiamos el id para simular que estamos editando un vehículo
-    component.ngOnInit();
-
-    // Verificamos que los valores del formulario se hayan llenado correctamente
-    fixture.detectChanges(); // Detecta los cambios
-
-    expect(component.form.value.modelName).toBe('Tesla Model S');
-    expect(component.form.value.maxSpeed).toBe('250');
-    expect(component.form.value.color).toBe('red');
-    expect(component.form.value.type).toBe('car');
-    expect(component.form.value.hasAirbag).toBe('true');
-  });
-
-  xit('should call saveVehicle on submit', () => {
+  it('should click on submit', () => {
+    const spyOnSubmit = spyOn(component, 'submit')
     // Configuramos el formulario con datos válidos
     component.form.setValue({
       modelName: 'Tesla Model X',
@@ -91,11 +67,11 @@ describe('VehicleEditComponent', () => {
       picture: 'img.jpg'
     });
 
-    // Simulamos el submit
-    component.submit();
+    const submitButton = fixture.debugElement.query(By.css('app-button'));
 
-    // Verificamos que la función de guardar vehículo haya sido llamada
-    expect(mockVehicleService.saveVehicle).toHaveBeenCalled();
+    submitButton.triggerEventHandler('onClick', null);
+
+    expect(spyOnSubmit).toHaveBeenCalled();
   });
 
   it('should show loading spinner when isLoading is true', () => {

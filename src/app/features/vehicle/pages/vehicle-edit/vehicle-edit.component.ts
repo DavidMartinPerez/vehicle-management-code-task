@@ -58,9 +58,9 @@ export class VehicleEditComponent implements OnInit, OnDestroy {
   }
 
   public form = new FormGroup({
-    modelName: new FormControl('', [Validators.required]),
+    modelName: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     picture: new FormControl('https://via.placeholder.com/400x300'),
-    maxSpeed: new FormControl('', [Validators.required]),
+    maxSpeed: new FormControl('80', [Validators.required, Validators.min(80)]),
     color: new FormControl('red', [Validators.required]),
     registrationDate: new FormControl('', [Validators.required]),
     type: new FormControl('car', [Validators.required]),
