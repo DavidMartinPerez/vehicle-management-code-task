@@ -1,0 +1,72 @@
+<app-arrow-back></app-arrow-back>
+
+@if (isLoading()) {
+  <div class="container mx-auto p-6 bg-white rounded-lg shadow-md flex w-full justify-center h-50">
+    <div class="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-purple-600"></div>
+  </div>
+} @else {
+  <div class="container mx-auto p-6 bg-white rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-6">
+        @if (isCreate) {
+          Create a new vehicle
+        } @else {
+          Edit a vehicle
+        }
+      </h1>
+
+
+      <form [formGroup]="form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" (ngSubmit)="submit()">
+        <app-input label="Model Name" placeholder="Tesla model Y" formControlName="modelName"></app-input>
+
+        <app-input label="Max Speed (km/h)" placeholder="200 Km/h" formControlName="maxSpeed" type="number" min="80"></app-input>
+
+        <app-input label="Picture" placeholder="https://via.placeholder.com/400x300" formControlName="picture" type="text"></app-input>
+
+        <app-select label="Color" formControlName="color">
+          <option value="red" selected>Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="black">Black</option>
+        </app-select>
+
+        <app-input label="Registration Date" placeholder="dd/mm/aaaa" formControlName="registrationDate" type="date"></app-input>
+
+        <app-select label="Type vehicle" formControlName="type">
+          <option seleted value="car">Car</option>
+          <option value="truck">Truck</option>
+        </app-select>
+
+        <p class="text-lg font-semibold col-span-1 sm:col-span-2 lg:col-span-3">Vehicle type specific data</p>
+
+        @if(this.form.value.type === 'car') {
+          <app-select label="Has airbag?" formControlName="hasAirbag">
+            <option seleted value="true">Yes</option>
+            <option value="false">No</option>
+          </app-select>
+
+          <app-select label="Fuel Type" formControlName="fuelType">
+            <option seleted value="diesel">Diesel</option>
+            <option value="gasoline">Gasoline</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="electric">Electric</option>
+          </app-select>
+        }
+
+        @if(this.form.value.type === 'truck') {
+          <app-input label="Max Height Supported (Kg)" placeholder="300 kg" formControlName="maxWeightSupported" type="number"></app-input>
+
+          <app-select label="Can attach trailer?" formControlName="canAttachTrailer">
+            <option seleted value="true">Yes</option>
+            <option value="false">No</option>
+          </app-select>
+        }
+
+
+        <div class="col-span-1 sm:col-span-2 lg:col-span-3">
+          <app-button (onClick)="submit()" [text]="isCreate ? 'Create' : 'Save'" [isDisabed]="this.form.invalid"></app-button>
+        </div>
+      </form>
+
+  </div>
+}

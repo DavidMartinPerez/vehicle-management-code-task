@@ -1,0 +1,22 @@
+<h1>Vehicle list</h1>
+
+<section class="py-2 flex justify-between">
+  <app-search (search)="search($event)" [disabledd]="isLoadingVehicle()"></app-search>
+
+  @if(isAdmin()) {
+    <app-button-link text="Create new vehicle" url="create"></app-button-link>
+  }
+</section>
+
+<div class="grid grid-cols-1 sm:grid-cols-1 m:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 p-4">
+  @for (vehicle of vehicles(); track $index) {
+      <!-- Start of a single card -->
+      <app-vehicle-card [vehicle]="vehicle"></app-vehicle-card>
+  }
+  @if ( isLoadingVehicle() ) {
+    @for (item of [1,2,3,4,5,6]; track $index) {
+      <app-vehicle-card-skeleton></app-vehicle-card-skeleton>
+    }
+  }
+</div>
+

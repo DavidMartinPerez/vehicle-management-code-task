@@ -1,0 +1,4 @@
+<label [for]="label()" class="block mb-2 text-sm font-medium text-purple-900 ">{{ label() }}</label>
+<select [id]="label()" #val class="border border-purple-300 text-purple-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" (change)="valueChanged(val.value)" [(ngModel)]="value">
+  <ng-content></ng-content>
+</select>

@@ -1,0 +1,5 @@
+<div>
+  <label class="block mb-2 text-sm font-medium text-purple-900 ">{{ label() }}</label>
+  <input #val [type]="type()" class="border border-purple-300 text-purple-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5" [placeholder]="placeholder()" [(ngModel)]="value"
+  (change)="valueChanged(val.value)" />
+</div>

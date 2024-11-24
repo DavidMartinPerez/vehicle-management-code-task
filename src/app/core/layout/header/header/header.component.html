@@ -1,0 +1,20 @@
+<header class="w-full bg-gray-800 text-white py-4">
+  <div class="container mx-auto flex items-center justify-between px-4">
+    <div class="flex items-center">
+      <img src="favicon.ico" alt="Logo" class="h-8 mr-4">
+      <span class="text-lg font-bold">Vehicle Administration</span>
+    </div>
+
+    <div class="flex items-center">
+      @if (authState$ | async; as authState) {
+        @let isLogged = authState.isLoggedIn;
+        @let userType = authState.userType;
+
+        @if (isLogged) {
+          <p class="mr-2">{{ 'Hey, ' + userType }}</p>
+          <app-button text="Log out" (onClick)="logout()"></app-button>
+        }
+      }
+    </div>
+  </div>
+</header>

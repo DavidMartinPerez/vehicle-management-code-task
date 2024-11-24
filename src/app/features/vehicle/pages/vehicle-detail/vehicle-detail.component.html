@@ -1,0 +1,51 @@
+<app-arrow-back></app-arrow-back>
+@if(!isLoading()) {
+  <div class="relative grid grid-rows-auto grid-cols-1 md:grid-cols-4 rounded-lg shadow-2xl">
+
+    <div class="row-span-1 col-span-2">
+      @if (vehicle()?.type === 'car') {
+        <img src="https://cdn.dealeraccelerate.com/autocafe/1/260/12179/1920x1440/1965-shelby-cobra-replica-backdraft-rt4b-gt"
+             alt="Vehicle Image"
+             class="h-full w-full object-cover rounded-tl-lg">
+      } @else {
+        <img src="https://cdn.motor1.com/images/mgl/9mZKbg/s1/2024-chevrolet-silverado-live-exterior-photos.jpg"
+             alt="Vehicle Image"
+             class="h-full w-full object-cover rounded-tl-lg">
+      }
+    </div>
+
+    <div class="col-span-2 p-8 bg-slate-50">
+      <p class="text-m font-semibold capitalize">{{ vehicle()?.type }}</p>
+      <h1 class="text-3xl font-bold mb-4">{{ vehicle()?.modelName }}</h1>
+      <p class="text-lg mb-6">This is a description of the vehicle. Some general info about the vehicle's history, condition, and features.</p>
+    </div>
+
+    <div class="col-span-2 p-8 bg-red-600 md:rounded-bl-lg text-white">
+      <p class="text-xl font-bold pb-1">Generic info</p>
+      <p><strong>Max Speed:</strong> {{ vehicle()?.maxSpeed }} km/h</p>
+      <p><strong>Color: </strong> <span class="capitalize"> {{ vehicle()?.color }}</span></p>
+      <p><strong>Registration Date:</strong> {{ vehicle()?.registrationDate }}</p>
+    </div>
+
+    <div class="col-span-2 bg-gray-800 text-white py-6 rounded-br-lg">
+      <div class="container mx-auto px-4">
+        <p class="text-xl font-bold pb-1">Specific info</p>
+        @if (vehicle()?.type === 'car') {
+          <p><strong>Has airbag: </strong> <span class="capitalize">{{ vehicle()?.specificData?.hasAirbag ? 'Yes' : 'No' }}</span></p>
+          <p><strong>Fuel type: </strong> <span class="capitalize">{{ vehicle()?.specificData?.fuelType }}</span></p>
+        } @else {
+          <p><strong>Max Weight Supported: </strong> <span class="capitalize">{{ vehicle()?.specificData?.maxWeightSupported }} Kg</span></p>
+          <p><strong>Can Attach Trailer: </strong> <span class="capitalize">{{ vehicle()?.specificData?.canAttachTrailer }}</span></p>
+        }
+      </div>
+    </div>
+
+    <div class="absolute top-6 right-6">
+      <app-button-link text="Edit" [url]="'edit'"></app-button-link>
+    </div>
+
+  </div>
+} @else {
+  <app-vehicle-detail-skeleton></app-vehicle-detail-skeleton>
+}
+

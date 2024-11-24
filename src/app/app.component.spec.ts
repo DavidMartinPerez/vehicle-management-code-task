@@ -1,10 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { RouterOutlet } from '@angular/router';
+import { FooterComponent } from '@core/layout/footer/footer/footer.component';
+import { HeaderComponent } from '@core/layout/header/header/header.component';
+import { ToasterSuccessfullyComponent } from '@shared/components/toaster-successfully/toaster-successfully.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, RouterOutlet, FooterComponent, HeaderComponent, ToasterSuccessfullyComponent],
     }).compileComponents();
   });
 
@@ -12,18 +16,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'vehicle-management-code-task' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('vehicle-management-code-task');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, vehicle-management-code-task');
   });
 });

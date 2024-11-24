@@ -1,0 +1,22 @@
+@if (showAlert) {
+  <div
+    class="fixed top-4 right-4 flex items-center bg-green-500 text-white text-sm font-medium px-4 py-3 rounded shadow-lg"
+    role="alert"
+  >
+    <svg
+      class="w-5 h-5 mr-2 text-white"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M5 13l4 4L19 7"
+      />
+    </svg>
+    <span>{{ message }}</span>
+  </div>
+}
