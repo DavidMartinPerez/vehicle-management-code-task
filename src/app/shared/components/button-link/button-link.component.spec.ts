@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ButtonLinkComponent } from './button-link.component';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ButtonLinkComponent', () => {
   let component: ButtonLinkComponent;
@@ -8,7 +10,7 @@ describe('ButtonLinkComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ButtonLinkComponent]
+      imports: [ButtonLinkComponent, RouterTestingModule]
     })
     .compileComponents();
 

@@ -134,3 +134,17 @@ export const mockVehicles: Vehicle[] = [
     },
   },
 ];
+
+export const mockVehicle: Vehicle = {
+  id: 1,
+  modelName: 'Tesla Model S',
+  picture: 'img',
+  type: 'car',
+  color: 'Red',
+  maxSpeed: 250,
+  registrationDate: '2023-01-01',
+  specificData: {
+    fuelType: 'electric',
+    hasAirbag: true,
+  },
+};
