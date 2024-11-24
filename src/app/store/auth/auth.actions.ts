@@ -1,4 +1,3 @@
-// src/app/actions/auth.actions.ts
 import { createAction, props } from '@ngrx/store';
 import { UserType } from '@core/models/user.model';
 

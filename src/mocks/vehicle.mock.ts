@@ -1,7 +1,6 @@
 import { Vehicle } from "@features/vehicle/models/vehicle.model";
 
 export const mockVehicles: Vehicle[] = [
-  // Cars
   {
     id: 1,
     modelName: 'Tesla Model S',
@@ -66,8 +65,6 @@ export const mockVehicles: Vehicle[] = [
       fuelType: 'electric',
     },
   },
-
-  // Trucks
   {
     id: 6,
     modelName: 'Freightliner Cascadia',

@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { UserTypeEnum } from '@core/models/user.model';
 import { Store } from '@ngrx/store';
 import { selectUserType } from '@store/auth/auth.selector';

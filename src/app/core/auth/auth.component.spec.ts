@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 describe('AuthComponent', () => {
   let component: AuthComponent;
   let fixture: ComponentFixture<AuthComponent>;
-  let store: MockStore;
+  let mockStore: MockStore;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,7 +19,7 @@ describe('AuthComponent', () => {
     })
     .compileComponents();
 
-    store = TestBed.inject(Store) as MockStore;
+    mockStore = TestBed.inject(Store) as MockStore;
 
     fixture = TestBed.createComponent(AuthComponent);
     component = fixture.componentInstance;
@@ -31,21 +31,21 @@ describe('AuthComponent', () => {
   });
 
   it('should dispatch with user when User button is clicked', () => {
-    spyOn(store, 'dispatch');
+    spyOn(mockStore, 'dispatch');
     const userButton = fixture.debugElement.query(By.css('app-button[text="User"]'));
 
     userButton.triggerEventHandler('onClick', null);
-    expect(store.dispatch).toHaveBeenCalledWith(
+    expect(mockStore.dispatch).toHaveBeenCalledWith(
       Login({ userType: UserTypeEnum.USER })
     );
   });
 
   it('should dispatch with admin when Admin button is clicked', () => {
-    spyOn(store, 'dispatch');
+    spyOn(mockStore, 'dispatch');
     const adminButton = fixture.debugElement.query(By.css('app-button[text="Admin"]'));
 
     adminButton.triggerEventHandler('onClick', null);
-    expect(store.dispatch).toHaveBeenCalledWith(
+    expect(mockStore.dispatch).toHaveBeenCalledWith(
       Login({ userType: UserTypeEnum.ADMIN })
     );
   });

@@ -24,7 +24,7 @@ export class VehicleEditComponent implements OnInit, OnDestroy {
   private readonly vehicleService = inject(VehicleService)
   private readonly store = inject(Store);
   private readonly vehicleToEdit = this.store.selectSignal(selectedVehicle);
-  public readonly isLoading = this.store.selectSignal(selectIsLoadingVehicle);
+  public isLoading = this.store.selectSignal(selectIsLoadingVehicle);
   public isCreate: boolean = true;
 
   constructor() {

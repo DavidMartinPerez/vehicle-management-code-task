@@ -1,4 +1,3 @@
-// src/app/actions/auth.actions.ts
 import { Vehicle } from '@features/vehicle/models/vehicle.model';
 import { createAction, props } from '@ngrx/store';
 

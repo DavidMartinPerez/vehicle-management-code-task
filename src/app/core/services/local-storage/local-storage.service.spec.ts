@@ -12,7 +12,6 @@ describe('LocalStorageService', () => {
   });
 
   beforeEach(() => {
-    // Mock del localStorage
     spyOn(localStorage, 'getItem').and.callFake((key: string) => mockStorage[key] || null);
     spyOn(localStorage, 'setItem').and.callFake((key: string, value: string) => {
       mockStorage[key] = value;
