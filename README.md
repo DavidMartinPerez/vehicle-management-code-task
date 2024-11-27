@@ -30,6 +30,9 @@ In which we have the vehicles and their different types of vehicles.
 
 ![database on img](/img/database.png "Database")
 
+## Flow chart
+
+![database on img](/img/flowchart.png "Database")
 
 ## Stack
 
@@ -91,4 +94,4 @@ I wanted to use the latest version with its latest features as I considered them
 - [ ] Control of 404 and not results
 - [ ] Translations into different languages
 - [ ] Use Jest
-- [ ] Use only signal
+- [ ] Use only signal for state
